@@ -1,0 +1,40 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+1,IBus - It is an open source input framework for Linux/Unix OS.
+http://code.google.com/p/ibus/
+2,ibus-sogoupycc:包括了选词，纠错，支持双拼和简拼，多线程请求，无堵塞。
+目前工作被已经被 ibus-cloud-pinyin 取代。
+http://code.google.com/p/ibus-sogoupycc/
+3,sogou-pinyin-chrome-extension:This extension is a small tool to
+synchronize the visibility of sogou cloud pinyin in all the tabs of
+chrome web browser.
+http://code.google.com/p/sogou-pinyin-chrome-extension/
+4, chinese-character-2-pinyin将汉字转换成拼音。 （无内容）
+http://code.google.com/p/chinese-character-2-pinyin/
+5，MEIM： is a Chinese pinyin input method，应用在UNIX/Linux 平台
+上。（无说明）
+http://sourceforge.net/projects/meim/
+6，davepy：把拼音转换成汉字，一个中文拼音输入法。（exe文件）
+http://code.google.com/u/davepy/
+7，sQuiQQleZ：拼音转汉字（无文件）
+http://sourceforge.net/projects/pinyinhelper/
+8，scim-googlepinyin ：mobile device
+http://code.google.com/p/scim-googlepinyin/
+9,google-pinyin-api:基于谷歌拼音api的扩展众包项目,已发布扩展 包括：  *
+名人语录    * 尾号限行    * 基金列表    * 常用数学序号    * 高等数学常用
+公式    * MOSFET常用公式速查   * 各种评级符号
+http://code.google.com/p/google-pinyin-api/
+10，Chinese to Pinyin：支持中文简体 或繁体 汉字转拼音
+http://sourceforge.net/projects/pinyin4j/
+11，HanYu Dictionary：支持中文简体，繁体汉字查询，使用CEDict 作为词典定义
+http://sourceforge.net/projects/hanyu/
+12，Bi-gram based Applications：包括了中文分词，中文简体，繁体转换和音字
+转换。（文件夹为空）
+http://sourceforge.net/projects/bigram-apps
