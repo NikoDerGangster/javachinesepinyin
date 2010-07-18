@@ -11,6 +11,7 @@
 package com.apc.pinyin;
 
 import com.apc.nlp.util.Distance;
+import hmm.Flag;
 import hmm.HmmResult;
 import hmm.Node;
 import hmm.Viterbi;
@@ -39,6 +40,12 @@ public class PinyinFrame extends javax.swing.JFrame {
         loadUserDict("userdict.txt");
         ptw.init();
         wtp.init();
+        if (2 == Flag.n) {
+            ptw.setN(2);
+            jRadioButton1.setSelected(true);
+            jRadioButton2.setSelected(false);
+            jRadioButton2.enableInputMethods(false);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -194,7 +201,7 @@ public class PinyinFrame extends javax.swing.JFrame {
             StringBuffer sb = new StringBuffer();
             int[] statePath = Viterbi.getStatePath(ret.states, ret.psai, o.length - 1, o.length, pos);
             for (int state : statePath) {
-                Character name = ptw.stateBank.get(state).getName();
+                Character name = ptw.getStateBank().get(state).getName();
                 sb.append(name + " ");
             }
             sb.append(String.valueOf(ret.delta[o.length - 1][pos]));
@@ -226,7 +233,7 @@ public class PinyinFrame extends javax.swing.JFrame {
             StringBuffer sb = new StringBuffer();
             int[] statePath = Viterbi.getStatePath(ret.states, ret.psai, o.length - 1, o.length, pos);
             for (int state : statePath) {
-                String name = wtp.stateBank.get(state).getName();
+                String name = wtp.getStateBank().get(state).getName();
                 sb.append(name + " ");
             }
             sb.append(String.valueOf(ret.delta[o.length - 1][pos]));

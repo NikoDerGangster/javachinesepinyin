@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class PinyinTokenizer {
 
     private void initPY(String filename) {
         try {
-            BufferedReader reader = getReader(filename, "UTF-8");
+            BufferedReader reader = getReader(filename);
             String temp = null;
             while ((temp = reader.readLine()) != null) {
                 temp = temp.trim();
@@ -105,25 +106,22 @@ public class PinyinTokenizer {
         return resultOpp;
     }
 
-    private BufferedReader getReader(String haspath, String charEncoding) {
+    private BufferedReader getReader(String haspath) {
         BufferedReader br = null;
+        InputStream is = null;
         File f = new File(haspath);
-        if (f.isFile()) {
-            try {
-                try {
-                    br = new BufferedReader(new InputStreamReader(new FileInputStream(f), charEncoding));
-                } catch (UnsupportedEncodingException ex) {
-                    ex.printStackTrace();
-                }
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
+
+        try {
+            if (f.isFile() && f.exists()) {
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "UTF-8"));
+            } else {
+                is = this.getClass().getClassLoader().getResourceAsStream("pinyin.dic");
+                br = new BufferedReader(new InputStreamReader(is));
             }
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        if (br != null) {
-            return br;
-        } else {
-            return null;
-        }
+        return br;
     }
     /*
     private void getPath(String a, StandardTrie trie) {

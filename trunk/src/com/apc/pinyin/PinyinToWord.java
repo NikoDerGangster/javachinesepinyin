@@ -13,6 +13,10 @@ import hmm.ngram.TreeNodeQuickSort;
 import hmm.ngram.TreeNodeSortor;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 /**
  *
@@ -46,6 +50,14 @@ public class PinyinToWord {
                 return t.getKey() - t1.getKey();
             }
         });
+    }
+
+    public NodeBank<String, Node<String>> getObserveBank() {
+        return observeBank;
+    }
+
+    public NodeBank<Character, Node<Character>> getStateBank() {
+        return stateBank;
     }
 
     public void setN(int n) {
@@ -109,27 +121,45 @@ public class PinyinToWord {
     public void save(String filename) {
         try {
             ngram.buildIndex(ngram.getCount(), sortor);
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename));
+            ObjectOutputStream oos = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream(filename)));
             oos.writeObject(stateBank);
             oos.writeObject(observeBank);
             oos.writeObject(pii);
 //            oos.writeObject(tranMatrix);
             oos.writeObject(emisMatrix);
             oos.writeObject(ngram);
+            oos.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     public void load(String filename) {
+        File file = new File(filename);
+        InputStream is = null;
+        if (!file.exists()) {
+            is = this.getClass().getClassLoader().getResourceAsStream("ptw.m");
+            load(is);
+        } else {
+            try {
+                is = new FileInputStream(file);
+                load(is);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void load(InputStream is) {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename));
+            ObjectInputStream ois = new ObjectInputStream(new GZIPInputStream(is));
             stateBank = (NodeBank<Character, Node<Character>>) ois.readObject();
             observeBank = (NodeBank<String, Node<String>>) ois.readObject();
             pii = (Map<Integer, Integer>) ois.readObject();
 //            tranMatrix = (Map<String, Map<Integer, Integer>>) ois.readObject();
             emisMatrix = (Map<Integer, Map<Integer, Integer>>) ois.readObject();
             ngram = (TreeNode<Character>) ois.readObject();
+            is.close();
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
@@ -140,6 +170,7 @@ public class PinyinToWord {
     public void train(String filename) {
         File file = new File(filename);
         if (file.exists()) {
+            System.out.println("train file " + file.getAbsolutePath());
             try {
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(
@@ -235,6 +266,7 @@ public class PinyinToWord {
     public void trainNgram(String filename) {
         File file = new File(filename);
         if (file.exists()) {
+            System.out.println("train file " + file.getAbsolutePath());
             try {
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(
