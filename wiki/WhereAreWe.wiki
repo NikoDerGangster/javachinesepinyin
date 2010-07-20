@@ -1,8 +1,8 @@
-#summary One-sentence summary of this page.
+#summary 相比当前拼音输入法的发展状况，javachinesepinyin应用了较为先进的技术。
 
 = Introduction =
 
-现在与拼音有关的开源项目有很多，还是google pinyin，scim，ibus是真正在做开源，搜狗搞云输入法，也有新意。通过简单的列出一些个人的项目，也可以看出良莠不齐。
+现在与拼音有关的开源项目有很多，还是google pinyin，scim，ibus是真正在做开源，搜狗搞云输入法，也有新意。通过简单的列出一些个人的项目，也可以看出良莠不齐。我不想指出是那些开放的网络拼音输入页面，简直是没法说了。
 
 ==有名项目==
 
