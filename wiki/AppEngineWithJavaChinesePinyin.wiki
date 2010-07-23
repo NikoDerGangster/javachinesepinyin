@@ -1,0 +1,11 @@
+#summary 为什么将javachinesepinyin发布到appengine.
+
+= Introduction =
+
+随着网络的发展，拼音输入法已经不应该仅仅用来帮助用户输入，而可以成为一个网络新词的获取和统计手段，并最终成为搜索引擎应用的一大数据来源。所以将javachinesepinyin发布到appengine成为我们的第一个目标。
+
+
+= Details =
+
+访问appengine，请打开链接：
+[http://951438.appspot.com/pinyin.jsp http://951438.appspot.com/pinyin.jsp]
