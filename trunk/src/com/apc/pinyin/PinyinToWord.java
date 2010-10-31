@@ -13,8 +13,6 @@ import hmm.ngram.TreeNodeQuickSort;
 import hmm.ngram.TreeNodeSortor;
 import java.io.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -358,7 +356,7 @@ public class PinyinToWord {
         c.train("outputN.txt");
         c.train("outputP.txt");
         c.train("outputR.txt");
-        c.trainNgram("/app/bkidx/20100506/news-1.idx");
+        c.trainNgram("news-1.idx");
         c.save("ptw.m");
 
 //        c.load("model");
