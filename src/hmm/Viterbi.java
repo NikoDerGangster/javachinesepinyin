@@ -74,51 +74,7 @@ public class Viterbi<S, O> {
         this.tran = tran;
     }
 
-    public void initTestData(Viterbi<String, String> v) {
-        State<String> s1 = new State("one");
-        v.stateBank.add(s1);
-        State<String> s2 = new State("two");
-        v.stateBank.add(s2);
-        State<String> s3 = new State("three");
-        v.stateBank.add(s3);
-
-        Observe<String> o1 = new Observe("H");
-        v.observeBank.add(o1);
-        Observe<String> o2 = new Observe("T");
-        v.observeBank.add(o2);
-
-        //transition
-        //0.8 0.1 0.1
-        //0.1 0.8 0.1
-        //0.1 0.1 0.8
-        v.tran.setStateBank(v.stateBank);
-        v.tran.setProb(s1.getIndex(), s1.getIndex(), 0.3);
-        v.tran.setProb(s1.getIndex(), s2.getIndex(), 0.3);
-        v.tran.setProb(s1.getIndex(), s3.getIndex(), 0.4);
-        v.tran.setProb(s2.getIndex(), s1.getIndex(), 0.2);
-        v.tran.setProb(s2.getIndex(), s2.getIndex(), 0.6);
-        v.tran.setProb(s2.getIndex(), s3.getIndex(), 0.2);
-        v.tran.setProb(s3.getIndex(), s1.getIndex(), 0.2);
-        v.tran.setProb(s3.getIndex(), s2.getIndex(), 0.2);
-        v.tran.setProb(s3.getIndex(), s3.getIndex(), 0.6);
-        v.tran.getRoot().printTreeNode("");
-        //emission
-        //0.5 0.5
-        //0.8 0.2
-        //0.2 0.8
-        v.e.setProb(o1.getIndex(), s1.getIndex(), 0.5);
-        v.e.setProb(o2.getIndex(), s1.getIndex(), 0.5);
-        v.e.setProb(o1.getIndex(), s2.getIndex(), 0.8);
-        v.e.setProb(o2.getIndex(), s2.getIndex(), 0.2);
-        v.e.setProb(o1.getIndex(), s3.getIndex(), 0.2);
-        v.e.setProb(o2.getIndex(), s3.getIndex(), 0.8);
-        v.e.setObserveBank(v.observeBank);
-
-        //Pi = [0.2 0.3 0.5]
-        v.pi.setPi(s1.getIndex(), 0.2);
-        v.pi.setPi(s2.getIndex(), 0.4);
-        v.pi.setPi(s3.getIndex(), 0.4);
-    }
+    
 
     public static int[] getStatePath(int[][] states, int[][] psai, int end, int depth, int pos) {
         int maxDepth = end + 1 > depth ? depth : end + 1;
@@ -225,37 +181,5 @@ public class Viterbi<S, O> {
         return path;
     }
 
-    public static void main(String[] args) {
-        List<String> o = new ArrayList<String>();
-        Viterbi<String, String> viterbi = new Viterbi<String, String>();
-        TreeNodeSortor<String> sortor = new TreeNodeBinarySort<String>();
-        sortor.setComparator(new Comparator<TreeNode<String>>() {
-
-            public int compare(TreeNode<String> t, TreeNode<String> t1) {
-                return t.getKey().compareTo(t1.getKey());
-            }
-        });
-        viterbi.setSortor(sortor);
-        viterbi.setComparator(new Comparator<String>() {
-
-            public int compare(String t, String t1) {
-                return t.compareTo(t1);
-            }
-        });
-        viterbi.initTestData(viterbi);
-        viterbi.setN(2);
-
-        //o = [ T H T H T H ]
-        o.add("T");
-        o.add("H");
-        o.add("T");
-        o.add("H");
-        o.add("T");
-        o.add("H");
-        List<Node<String>> s = viterbi.caculateWithLog(o);
-        for (Node state : s) {
-            System.out.print(state.getName() + " ");
-        }
-        System.out.println();
-    }
+    
 }

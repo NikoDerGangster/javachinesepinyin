@@ -4,7 +4,6 @@
  */
 package com.apc.pinyin;
 
-import com.apc.indextask.idx.Idx;
 import com.apc.util.Pair;
 import com.apc.util.Window;
 import hmm.*;
