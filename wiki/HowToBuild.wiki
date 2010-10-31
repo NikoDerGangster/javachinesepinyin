@@ -1,0 +1,66 @@
+#summary checkout源代码，编译和运行javachinesepinyin
+
+==1、Checkout==
+
+http://code.google.com/p/javachinesepinyin/source/checkout
+
+==2、Download Corpus==
+javachinesepinyin使用了两份语料：LCMC中文与拼音的对应语料和宏爵财经资讯提供的一份新闻语料。
+===2.1、LCMC语料===
+All.tar，随源码下载，其中包含了若干文本文件，其中的拼音已经被处理成无声调（四声）。
+
+===2.2、新闻语料===
+javachinesepinyin使用的新闻语料news-1.idx.gz<br/>
+http://code.google.com/p/javachinesepinyin/downloads/detail?name=news-1.idx.gz&can=2&q=#makechanges
+
+==3、编译==
+可以使用IDE netbeans进行编译<br/>
+如成功则build出来javachinesepinyin.jar
+
+==4、HMM模型==
+解压All.tar以及news-1.idx.gz，得到result文件夹和文件news-1.idx
+===4.1、训练拼音转汉字模型===
+因为偷懒，将解压出来的文件写死在程序中了，可以查看源文件com/apc/pinyin/PinyinToWord.java中main方法
+{{{
+        PinyinToWord c = new PinyinToWord();
+        c.train("outputA.txt");
+        c.train("outputB.txt");
+        c.train("outputC.txt");
+        c.train("outputD.txt");
+        c.train("outputE.txt");
+        c.train("outputF.txt");
+        c.train("outputG.txt");
+        c.train("outputH.txt");
+        c.train("outputI.txt");
+        c.train("outputJ.txt");
+        c.train("outputK.txt");
+        c.train("outputL.txt");
+        c.train("outputM.txt");
+        c.train("outputN.txt");
+        c.train("outputP.txt");
+        c.train("outputR.txt");
+        c.trainNgram("news-1.idx");
+        c.save("ptw.m");
+}}}
+===4.2、训练汉字转拼音模型===
+训练汉字转拼音的模型和拼音转汉字相似，可以查看源文件com/apc/pinyin/WordToPinyin.java中main方法
+{{{
+        WordToPinyin c = new WordToPinyin();
+        c.train("outputA.txt");
+        c.train("outputB.txt");
+        c.train("outputC.txt");
+        c.train("outputD.txt");
+        c.train("outputE.txt");
+        c.train("outputF.txt");
+        c.train("outputG.txt");
+        c.train("outputH.txt");
+        c.train("outputI.txt");
+        c.train("outputJ.txt");
+        c.train("outputK.txt");
+        c.train("outputL.txt");
+        c.train("outputM.txt");
+        c.train("outputN.txt");
+        c.train("outputP.txt");
+        c.train("outputR.txt");
+        c.save("wtp.m");
+}}}
