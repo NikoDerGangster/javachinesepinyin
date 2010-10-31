@@ -18,7 +18,15 @@ http://code.google.com/p/javachinesepinyin/downloads/detail?name=news-1.idx.gz&c
 如成功则build出来javachinesepinyin.jar
 
 ==4、HMM模型==
-解压All.tar以及news-1.idx.gz，得到result文件夹和文件news-1.idx
+首先准备语料，解压All.tar以及news-1.idx.gz，得到result文件夹和文件news-1.idx
+{{{
+mkdir corpus
+cp All.tar corpus
+cp news-1.idx.gz
+gzip -d news-1.idx.gz
+tar xvf all.tar
+cp result/*.txt ./
+}}}
 ===4.1、训练拼音转汉字模型===
 因为偷懒，将解压出来的文件写死在程序中了，可以查看源文件com/apc/pinyin/PinyinToWord.java中main方法
 {{{
@@ -42,6 +50,11 @@ http://code.google.com/p/javachinesepinyin/downloads/detail?name=news-1.idx.gz&c
         c.trainNgram("news-1.idx");
         c.save("ptw.m");
 }}}
+运行以下命令：
+{{{
+java -cp javachinesepinyin.jar com.apc.pinyin.PinyinToWord<br/>
+}}}
+将生成ptw.m文件。
 ===4.2、训练汉字转拼音模型===
 训练汉字转拼音的模型和拼音转汉字相似，可以查看源文件com/apc/pinyin/WordToPinyin.java中main方法
 {{{
@@ -63,4 +76,16 @@ http://code.google.com/p/javachinesepinyin/downloads/detail?name=news-1.idx.gz&c
         c.train("outputP.txt");
         c.train("outputR.txt");
         c.save("wtp.m");
+}}}
+运行以下命令：
+{{{
+java -cp javachinesepinyin.jar com.apc.pinyin.WordToPinyin<br/>
+}}}
+将生成wtp.m文件。
+
+==5、运行==
+运行javachinesepinyin需要文件pinyin.dic、ptw.m、wtp.m三个文件，userdict.txt不是必需的。
+将以上提到的文件拷贝至javachinesepinyin.jar相同目录下，运行以下命令即可：
+{{{
+java -cp javachinesepinyin.jar:. com.apc.pinyin.PinyinFrame
 }}}
