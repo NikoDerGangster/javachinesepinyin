@@ -52,7 +52,7 @@ cp result/*.txt ./
 }}}
 运行以下命令：
 {{{
-java -cp javachinesepinyin.jar com.apc.pinyin.PinyinToWord<br/>
+java -cp javachinesepinyin.jar com.apc.pinyin.PinyinToWord
 }}}
 将生成ptw.m文件。
 ===4.2、训练汉字转拼音模型===
@@ -79,7 +79,7 @@ java -cp javachinesepinyin.jar com.apc.pinyin.PinyinToWord<br/>
 }}}
 运行以下命令：
 {{{
-java -cp javachinesepinyin.jar com.apc.pinyin.WordToPinyin<br/>
+java -cp javachinesepinyin.jar com.apc.pinyin.WordToPinyin
 }}}
 将生成wtp.m文件。
 
