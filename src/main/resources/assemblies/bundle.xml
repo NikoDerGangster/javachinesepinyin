@@ -1,0 +1,36 @@
+
+<assembly>
+    <id>bundle</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <fileMode>0755</fileMode>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/main/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>false</filtered>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/config</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>false</filtered>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/corpus</directory>
+            <outputDirectory>corpus</outputDirectory>
+            <filtered>false</filtered>
+            <fileMode>0644</fileMode>
+        </fileSet>
+    </fileSets>
+
+</assembly>
