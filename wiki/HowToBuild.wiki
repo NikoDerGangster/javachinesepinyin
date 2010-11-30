@@ -7,7 +7,7 @@ http://code.google.com/p/javachinesepinyin/source/checkout
 ==2、Download Corpus==
 javachinesepinyin使用了两份语料：LCMC中文与拼音的对应语料和宏爵财经资讯提供的一份新闻语料。
 ===2.1、LCMC语料===
-All.tar，随源码下载，其中包含了若干文本文件，其中的拼音已经被处理成无声调（四声）。
+src/main/resources/corpus/LCMC，随源码下载，其中包含了若干文本文件，其中的拼音已经被处理成无声调（四声）。
 
 ===2.2、新闻语料===
 javachinesepinyin使用的新闻语料news-1.idx.gz<br/>
@@ -15,77 +15,24 @@ http://code.google.com/p/javachinesepinyin/downloads/detail?name=news-1.idx.gz&c
 
 ==3、编译==
 可以使用IDE netbeans进行编译<br/>
-如成功则build出来javachinesepinyin.jar
+如成功则build出来javachinesepinyin.jar、javachinesepinyin-${version}-bundle.zip
 
 ==4、HMM模型==
-首先准备语料，解压All.tar以及news-1.idx.gz，得到result文件夹和文件news-1.idx
+首先准备语料，解压news-1.idx.gz和javachinesepinyin-${version}-bundle.zip，得到文件news-1.idx。
 {{{
-mkdir corpus
-cp All.tar corpus
-cp news-1.idx.gz
 gzip -d news-1.idx.gz
-tar xvf all.tar
-cp result/*.txt ./
+cp news_1.idx corpus/LCMC
 }}}
-===4.1、训练拼音转汉字模型===
-因为偷懒，将解压出来的文件写死在程序中了，可以查看源文件com/apc/pinyin/PinyinToWord.java中main方法
+===4.1、训练拼音转汉字和汉字转拼音模型===
 {{{
-        PinyinToWord c = new PinyinToWord();
-        c.train("outputA.txt");
-        c.train("outputB.txt");
-        c.train("outputC.txt");
-        c.train("outputD.txt");
-        c.train("outputE.txt");
-        c.train("outputF.txt");
-        c.train("outputG.txt");
-        c.train("outputH.txt");
-        c.train("outputI.txt");
-        c.train("outputJ.txt");
-        c.train("outputK.txt");
-        c.train("outputL.txt");
-        c.train("outputM.txt");
-        c.train("outputN.txt");
-        c.train("outputP.txt");
-        c.train("outputR.txt");
-        c.trainNgram("news-1.idx");
-        c.save("ptw.m");
+cd bin
+./train.sh ../corpus/LCMC
 }}}
-运行以下命令：
-{{{
-java -cp javachinesepinyin.jar com.apc.pinyin.PinyinToWord
-}}}
-将生成ptw.m文件。
-===4.2、训练汉字转拼音模型===
-训练汉字转拼音的模型和拼音转汉字相似，可以查看源文件com/apc/pinyin/WordToPinyin.java中main方法
-{{{
-        WordToPinyin c = new WordToPinyin();
-        c.train("outputA.txt");
-        c.train("outputB.txt");
-        c.train("outputC.txt");
-        c.train("outputD.txt");
-        c.train("outputE.txt");
-        c.train("outputF.txt");
-        c.train("outputG.txt");
-        c.train("outputH.txt");
-        c.train("outputI.txt");
-        c.train("outputJ.txt");
-        c.train("outputK.txt");
-        c.train("outputL.txt");
-        c.train("outputM.txt");
-        c.train("outputN.txt");
-        c.train("outputP.txt");
-        c.train("outputR.txt");
-        c.save("wtp.m");
-}}}
-运行以下命令：
-{{{
-java -cp javachinesepinyin.jar com.apc.pinyin.WordToPinyin
-}}}
-将生成wtp.m文件。
+将生成ptw.m和wtp.m文件。
 
 ==5、运行==
-运行javachinesepinyin需要文件pinyin.dic、ptw.m、wtp.m三个文件，userdict.txt不是必需的。
-将以上提到的文件拷贝至javachinesepinyin.jar相同目录下，运行以下命令即可：
+在生成m文件之后，可以运行javachinesepinyin了。
 {{{
-java -cp javachinesepinyin.jar:. com.apc.pinyin.PinyinFrame
+cd bin
+./run.sh
 }}}
