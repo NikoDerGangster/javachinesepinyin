@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.apc.nlp.util;
+package com.apc.pinyin;
 
 import java.util.List;
 
