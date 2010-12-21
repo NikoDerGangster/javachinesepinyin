@@ -1,4 +1,4 @@
-package com.apc.util;
+package com.apc.pinyin.util;
 
 import java.util.Comparator;
 
