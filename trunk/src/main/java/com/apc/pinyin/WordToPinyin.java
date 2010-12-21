@@ -4,8 +4,8 @@
  */
 package com.apc.pinyin;
 
-import com.apc.util.Pair;
-import com.apc.util.Window;
+import com.apc.pinyin.util.Pair;
+import com.apc.pinyin.util.Window;
 import hmm.*;
 import hmm.ngram.*;
 import java.io.*;
