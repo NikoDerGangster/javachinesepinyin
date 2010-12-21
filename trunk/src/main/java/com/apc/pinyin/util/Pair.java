@@ -12,7 +12,7 @@ import java.util.Map;
  * @author ray
  */
 public class Pair<K,V> implements Map.Entry<K,V> {
-    K k = null;
+    final K k;
     V v = null;
 
     public Pair(K k, V v){
@@ -20,14 +20,17 @@ public class Pair<K,V> implements Map.Entry<K,V> {
         this.v = v;
     }
 
+    @Override
     public K getKey() {
         return k;
     }
 
+    @Override
     public V getValue() {
         return v;
     }
 
+    @Override
     public V setValue(V value) {
         v = value;
         return v;

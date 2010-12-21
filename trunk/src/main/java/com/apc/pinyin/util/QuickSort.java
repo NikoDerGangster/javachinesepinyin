@@ -66,6 +66,7 @@ public class QuickSort<T> {
         QuickSort<Integer> qs = new QuickSort<Integer>();
         qs.sort(array, new Comparator<Integer>() {
 
+            @Override
             public int compare(Integer o1, Integer o2) {
                 return o1 - o2;
             }
