@@ -10,7 +10,6 @@
  */
 package com.apc.pinyin;
 
-import com.apc.nlp.util.Distance;
 import hmm.Flag;
 import hmm.HmmResult;
 import hmm.Node;
