@@ -74,8 +74,6 @@ public class Viterbi<S, O> {
         this.tran = tran;
     }
 
-    
-
     public static int[] getStatePath(int[][] states, int[][] psai, int end, int depth, int pos) {
         int maxDepth = end + 1 > depth ? depth : end + 1;
         int[] ret = new int[maxDepth];
@@ -89,16 +87,19 @@ public class Viterbi<S, O> {
         return ret;
     }
 
-    public HmmResult caculateHmmResult(List<O> listObserve) {
+    public HmmResult caculateHmmResult(List<O> listObserve) throws ObserveListException {
         HmmResult ret = new HmmResult();
+
+        if (listObserve.isEmpty()) {
+            throw new ObserveListException("observe list is empty.");
+        }
 
         O o = listObserve.get(0);
         Node<O> o1 = observeBank.get(o);
         if (o1 == null) {
-            o1 = new Observe<O>(o);
-            observeBank.add(o1);
+            throw new ObserveListException("unknown observe object " + o + ".");
         }
-//        Set<Integer> relatedStates = e.getStateProbByObserve(o1.getIndex());
+
         Set<Integer> relatedStates = e.getStateProbByObserve(o1.getName());
         ret.states = new int[listObserve.size()][];
         ret.delta = new double[listObserve.size()][];
@@ -124,6 +125,9 @@ public class Viterbi<S, O> {
             }
 //            Map<Integer, Double> iStates = e.getStateProbByObserve(oi.getIndex());
             Set<Integer> stateSet = e.getStateProbByObserve(oi.getName());
+            if (stateSet.isEmpty()) {
+                throw new ObserveListException("unknown observe object " + o + ".");
+            }
             ret.states[p] = new int[stateSet.size()];
             ret.delta[p] = new double[stateSet.size()];
             ret.psai[p] = new int[stateSet.size()];
@@ -159,7 +163,7 @@ public class Viterbi<S, O> {
         return ret;
     }
 
-    public List<Node<S>> caculateWithLog(List<O> listObserve) {
+    public List<Node<S>> caculateWithLog(List<O> listObserve) throws ObserveListException {
         List<Node<S>> path = new ArrayList<Node<S>>();
         HmmResult ret = caculateHmmResult(listObserve);
         //
@@ -180,6 +184,4 @@ public class Viterbi<S, O> {
 
         return path;
     }
-
-    
 }

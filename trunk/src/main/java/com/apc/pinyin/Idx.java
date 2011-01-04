@@ -271,43 +271,4 @@ public class Idx {
     static {
         //BaseData.loadLog4jConfigFile();
     }
-
-    public static void main(String args[]) {
-//        File input = new File("/app/idx/1236006307-18_finance_qq_com_2.idx");
-        File input = new File("/app/idx/test.idx");
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(input), "UTF-8"));
-
-            String doc = Idx.parsePlainText(reader);
-            while (doc != null) {
-                Idx idx = new Idx(doc);
-
-                idx.addField("drecontent","a");
-                idx.removeField("publishdate");
-                idx.addField("publishdate", "2009-11-25");
-
-                System.out.println("------------------");
-                System.out.println(idx.getTitle());
-                System.out.println(idx);
-                System.out.println("------------------");
-
-                doc = Idx.parsePlainText(reader);
-            }
-
-            System.out.println("Exiting...");
-            System.exit(0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
 }
