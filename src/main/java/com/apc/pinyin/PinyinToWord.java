@@ -36,6 +36,7 @@ public class PinyinToWord {
         sortor = new TreeNodeQuickSort<Character>();
         comparator = new Comparator<Character>() {
 
+            @Override
             public int compare(Character t, Character t1) {
                 return t.charValue() - t1.charValue();
             }
@@ -43,6 +44,7 @@ public class PinyinToWord {
 
         sortor.setComparator(new Comparator<TreeNode<Character>>() {
 
+            @Override
             public int compare(TreeNode<Character> t, TreeNode<Character> t1) {
                 return t.getKey() - t1.getKey();
             }
@@ -89,29 +91,24 @@ public class PinyinToWord {
         emisMatrix = null;
     }
 
-    public List<Node<Character>> classify(String[] o) {
+    public List<Node<Character>> classify(String[] o) throws ObserveListException {
         List<String> observeList = new ArrayList<String>(o.length);
-        for (String ob : o) {
-//            Node<String> observe = observeBank.get(ob);
-            observeList.add(ob);
-        }
+        observeList.addAll(Arrays.asList(o));
         return classify(observeList);
     }
 
-    public List<Node<Character>> classify(List<String> o) {
+    public List<Node<Character>> classify(List<String> o) throws ObserveListException {
         return viterbi.caculateWithLog(o);
+
     }
 
-    public HmmResult viterbi(String[] o) {
+    public HmmResult viterbi(String[] o) throws ObserveListException {
         List<String> observeList = new ArrayList<String>(o.length);
-        for (String ob : o) {
-//            Node observe = observeBank.get(ob);
-            observeList.add(ob);
-        }
+        observeList.addAll(Arrays.asList(o));
         return viterbi(observeList);
     }
 
-    public HmmResult viterbi(List<String> o) {
+    public HmmResult viterbi(List<String> o) throws ObserveListException {
         return viterbi.caculateHmmResult(o);
     }
 
@@ -342,11 +339,11 @@ public class PinyinToWord {
             PinyinToWord c = new PinyinToWord();
             File dir = new File(args[0]);
             if (dir.isDirectory() && dir.exists()) {
-                for(File f : dir.listFiles()){
+                for (File f : dir.listFiles()) {
                     String fname = f.getName();
-                    if(fname.endsWith(".txt")){
+                    if (fname.endsWith(".txt")) {
                         c.train(f.getAbsolutePath());
-                    } else if(fname.endsWith(".idx")){
+                    } else if (fname.endsWith(".idx")) {
                         c.trainNgram(f.getAbsolutePath());
                     }
                 }

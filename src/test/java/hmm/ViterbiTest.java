@@ -2,19 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package hmm;
 
 import hmm.ngram.TreeNode;
 import hmm.ngram.TreeNodeBinarySort;
 import hmm.ngram.TreeNodeSortor;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import junit.framework.TestCase;
+
 /**
  *
  * @author ray
  */
 public class ViterbiTest extends TestCase {
+
     public ViterbiTest(String testName) {
         super(testName);
     }
@@ -25,6 +28,7 @@ public class ViterbiTest extends TestCase {
         TreeNodeSortor<String> sortor = new TreeNodeBinarySort<String>();
         sortor.setComparator(new Comparator<TreeNode<String>>() {
 
+            @Override
             public int compare(TreeNode<String> t, TreeNode<String> t1) {
                 return t.getKey().compareTo(t1.getKey());
             }
@@ -32,6 +36,7 @@ public class ViterbiTest extends TestCase {
         viterbi.setSortor(sortor);
         viterbi.setComparator(new Comparator<String>() {
 
+            @Override
             public int compare(String t, String t1) {
                 return t.compareTo(t1);
             }
@@ -47,14 +52,59 @@ public class ViterbiTest extends TestCase {
         o.add("H");
         o.add("T");
         o.add("H");
-        List<Node<String>> s = viterbi.caculateWithLog(o);
-        StringBuilder sb = new StringBuilder();
-        for (Node state : s) {
-            System.out.print(state.getName() + " ");
-            sb.append(state.getName()).append(" ");
+        try {
+            List<Node<String>> s;
+            s = viterbi.caculateWithLog(o);
+            StringBuilder sb = new StringBuilder();
+            for (Node state : s) {
+                System.out.print(state.getName() + " ");
+                sb.append(state.getName()).append(" ");
+            }
+            assert (sb.toString().trim().equals("three three three three three two"));
+        } catch (ObserveListException ex) {
+            Logger.getLogger(ViterbiTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        assert(sb.toString().trim().equals("three three three three three two"));
-        System.out.println("Test passed.");
+    }
+
+    public void testViterbiWithUnknownState() {
+        List<String> o = new ArrayList<String>();
+        Viterbi<String, String> viterbi = new Viterbi<String, String>();
+        TreeNodeSortor<String> sortor = new TreeNodeBinarySort<String>();
+        sortor.setComparator(new Comparator<TreeNode<String>>() {
+
+            @Override
+            public int compare(TreeNode<String> t, TreeNode<String> t1) {
+                return t.getKey().compareTo(t1.getKey());
+            }
+        });
+        viterbi.setSortor(sortor);
+        viterbi.setComparator(new Comparator<String>() {
+
+            @Override
+            public int compare(String t, String t1) {
+                return t.compareTo(t1);
+            }
+        });
+
+        initTestData(viterbi);
+        viterbi.setN(2);
+
+        //o = [ T H T H T H ]
+        o.add("A");
+        o.add("H");
+
+        try {
+            List<Node<String>> s;
+            s = viterbi.caculateWithLog(o);
+            StringBuilder sb = new StringBuilder();
+            for (Node state : s) {
+                System.out.print(state.getName() + " ");
+                sb.append(state.getName()).append(" ");
+            }
+        } catch (ObserveListException ex) {
+            assert (true);
+        }
+
     }
 
     public static void initTestData(Viterbi<String, String> v) {

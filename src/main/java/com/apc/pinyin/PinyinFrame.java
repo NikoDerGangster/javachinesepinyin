@@ -13,6 +13,7 @@ package com.apc.pinyin;
 import hmm.Flag;
 import hmm.HmmResult;
 import hmm.Node;
+import hmm.ObserveListException;
 import hmm.Viterbi;
 import java.io.*;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -143,15 +146,18 @@ public class PinyinFrame extends javax.swing.JFrame {
                 wordToPinyin();
             }
         } else {
-            if (isPinyin) {
+            if (isPinyin && Character.isLetter(ch)) {
                 String[] o = tokenizer.tokenize(jTextField1.getText().replaceAll("'", "").trim());
                 if (o.length > 0) {
-                    StringBuffer sb = new StringBuffer();
+                    StringBuilder sb = new StringBuilder();
                     for (String s : o) {
                         sb.append(s).append("'");
                     }
                     sb.deleteCharAt(sb.length() - 1);
+                    int p = jTextField1.getCaretPosition();
+                    int l = jTextField1.getText().length();
                     jTextField1.setText(sb.toString());
+                    jTextField1.setCaretPosition(p + sb.length() - l);
                 }
             }
         }
@@ -176,48 +182,61 @@ public class PinyinFrame extends javax.swing.JFrame {
     private String correct(String pinyin, String txt) {
         String ret = null;
         String[] o = tokenizer.tokenize(pinyin);
-        List<Node<Character>> res = ptw.classify(o);
+        List<Node<Character>> res = null;
+        try {
+            res = ptw.classify(o);
+        } catch (ObserveListException ex) {
+            System.out.println(ex.getMessage());
+        }
         String str = "";
-        for (Node<Character> node : res) {
-            str += node.getName();
-        }
+        if (null != res) {
+            for (Node<Character> node : res) {
+                str += node.getName();
+            }
 
-        Distance dis = new Distance();
-        int n = dis.LD(str, txt);
-        if (n == 1) {
-            ret = str;
+            Distance dis = new Distance();
+            int n = dis.LD(str, txt);
+            if (n == 1) {
+                ret = str;
+            }
         }
-
         return ret;
     }
 
     private void pinyinToWord() {
         String[] o = tokenizer.tokenize(jTextField1.getText().trim());
 
-        HmmResult ret = ptw.viterbi(o);
-        Map<Double, String> results = new HashMap<Double, String>();
-        for (int pos = 0; pos < ret.states[o.length - 1].length; pos++) {
-            StringBuffer sb = new StringBuffer();
-            int[] statePath = Viterbi.getStatePath(ret.states, ret.psai, o.length - 1, o.length, pos);
-            for (int state : statePath) {
-                Character name = ptw.getStateBank().get(state).getName();
-                sb.append(name + " ");
-            }
-            sb.append(String.valueOf(ret.delta[o.length - 1][pos]));
-            results.put(ret.delta[o.length - 1][pos], sb.toString());
+        HmmResult ret = null;
+        try {
+            ret = ptw.viterbi(o);
+        } catch (ObserveListException ex) {
+            System.out.println(ex.getMessage());
         }
-        List<Double> list = new ArrayList<Double>(results.keySet());
-        Collections.sort(list);
-        Collections.reverse(list);
-        int end = jCheckBox1.isSelected()
-                ? ret.states[o.length - 1].length
-                : ret.states[o.length - 1].length >= 7 ? 7 : ret.states[o.length - 1].length;
-        int i = 0;
-        for (Double d : list) {
-            jTextArea1.append(results.get(d));
-            jTextArea1.append("\n");
-            if (++i >= end) {
-                break;
+        Map<Double, String> results = new HashMap<Double, String>();
+        if (null != ret && ret.states != null) {
+            for (int pos = 0; pos < ret.states[o.length - 1].length; pos++) {
+                StringBuilder sb = new StringBuilder();
+                int[] statePath = Viterbi.getStatePath(ret.states, ret.psai, o.length - 1, o.length, pos);
+                for (int state : statePath) {
+                    Character name = ptw.getStateBank().get(state).getName();
+                    sb.append(name).append(" ");
+                }
+                sb.append(String.valueOf(ret.delta[o.length - 1][pos]));
+                results.put(ret.delta[o.length - 1][pos], sb.toString());
+            }
+            List<Double> list = new ArrayList<Double>(results.keySet());
+            Collections.sort(list);
+            Collections.reverse(list);
+            int end = jCheckBox1.isSelected()
+                    ? ret.states[o.length - 1].length
+                    : ret.states[o.length - 1].length >= 7 ? 7 : ret.states[o.length - 1].length;
+            int i = 0;
+            for (Double d : list) {
+                jTextArea1.append(results.get(d));
+                jTextArea1.append("\n");
+                if (++i >= end) {
+                    break;
+                }
             }
         }
     }
@@ -226,40 +245,47 @@ public class PinyinFrame extends javax.swing.JFrame {
         String txt = jTextField1.getText().replaceAll("[\\w\\d\\s\\pP~]+", "");
         char[] o = txt.toCharArray();
 
-        HmmResult ret = wtp.viterbi(o);
+        HmmResult ret = null;
+        try {
+            ret = wtp.viterbi(o);
+        } catch (ObserveListException ex) {
+            System.out.println(ex.getMessage());
+        }
         Map<Double, String> results = new HashMap<Double, String>();
-        for (int pos = 0; pos < ret.states[o.length - 1].length; pos++) {
-            StringBuffer sb = new StringBuffer();
-            int[] statePath = Viterbi.getStatePath(ret.states, ret.psai, o.length - 1, o.length, pos);
-            for (int state : statePath) {
-                String name = wtp.getStateBank().get(state).getName();
-                sb.append(name + " ");
+        if (null != ret && ret.states != null) {
+            for (int pos = 0; pos < ret.states[o.length - 1].length; pos++) {
+                StringBuilder sb = new StringBuilder();
+                int[] statePath = Viterbi.getStatePath(ret.states, ret.psai, o.length - 1, o.length, pos);
+                for (int state : statePath) {
+                    String name = wtp.getStateBank().get(state).getName();
+                    sb.append(name).append(" ");
+                }
+                sb.append(String.valueOf(ret.delta[o.length - 1][pos]));
+                results.put(ret.delta[o.length - 1][pos], sb.toString());
             }
-            sb.append(String.valueOf(ret.delta[o.length - 1][pos]));
-            results.put(ret.delta[o.length - 1][pos], sb.toString());
-        }
-        List<Double> list = new ArrayList<Double>(results.keySet());
-        Collections.sort(list);
-        Collections.reverse(list);
+            List<Double> list = new ArrayList<Double>(results.keySet());
+            Collections.sort(list);
+            Collections.reverse(list);
 
-        String pinyin = results.get(list.get(0)).replaceAll("[-\\d\\.]+", "").trim();
-        String correct = correct(pinyin, txt);
+            String pinyin = results.get(list.get(0)).replaceAll("[-\\d\\.]+", "").trim();
+            String correct = correct(pinyin, txt);
 
 
-        if (null != correct) {
-            jTextArea1.append(correct);
-            jTextArea1.append("\n");
-        }
+            if (null != correct) {
+                jTextArea1.append(correct);
+                jTextArea1.append("\n");
+            }
 
-        int end = jCheckBox1.isSelected()
-                ? ret.states[o.length - 1].length
-                : ret.states[o.length - 1].length >= 7 ? 7 : ret.states[o.length - 1].length;
-        int i = 0;
-        for (Double d : list) {
-            jTextArea1.append(results.get(d));
-            jTextArea1.append("\n");
-            if (++i >= end) {
-                break;
+            int end = jCheckBox1.isSelected()
+                    ? ret.states[o.length - 1].length
+                    : ret.states[o.length - 1].length >= 7 ? 7 : ret.states[o.length - 1].length;
+            int i = 0;
+            for (Double d : list) {
+                jTextArea1.append(results.get(d));
+                jTextArea1.append("\n");
+                if (++i >= end) {
+                    break;
+                }
             }
         }
     }

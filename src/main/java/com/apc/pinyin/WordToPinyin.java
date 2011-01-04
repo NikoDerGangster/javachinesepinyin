@@ -34,6 +34,7 @@ public class WordToPinyin {
         sortor = new TreeNodeBinarySort<String>();
         comparator = new Comparator<String>() {
 
+            @Override
             public int compare(String t, String t1) {
                 return t.compareTo(t1);
             }
@@ -41,6 +42,7 @@ public class WordToPinyin {
 
         sortor.setComparator(new Comparator<TreeNode<String>>() {
 
+            @Override
             public int compare(TreeNode<String> t, TreeNode<String> t1) {
                 return t.getKey().compareTo(t1.getKey());
             }
@@ -87,20 +89,17 @@ public class WordToPinyin {
         emisMatrix = null;
     }
 
-    public List<Node<String>> classify(Character[] o) {
+    public List<Node<String>> classify(Character[] o) throws ObserveListException {
         List<Character> observeList = new ArrayList<Character>(o.length);
-        for (Character ob : o) {
-//            Node<String> observe = observeBank.get(ob);
-            observeList.add(ob);
-        }
+        observeList.addAll(Arrays.asList(o));
         return classify(observeList);
     }
 
-    public List<Node<String>> classify(List<Character> o) {
+    public List<Node<String>> classify(List<Character> o) throws ObserveListException {
         return viterbi.caculateWithLog(o);
     }
 
-    public HmmResult viterbi(char[] o) {
+    public HmmResult viterbi(char[] o) throws ObserveListException {
         List<Character> observeList = new ArrayList<Character>(o.length);
         for (Character ob : o) {
 //            Node observe = observeBank.get(ob);
@@ -109,7 +108,7 @@ public class WordToPinyin {
         return viterbi(observeList);
     }
 
-    public HmmResult viterbi(List<Character> o) {
+    public HmmResult viterbi(List<Character> o) throws ObserveListException {
         return viterbi.caculateHmmResult(o);
     }
 

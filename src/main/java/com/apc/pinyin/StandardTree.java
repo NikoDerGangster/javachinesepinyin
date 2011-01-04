@@ -8,43 +8,9 @@ package com.apc.pinyin;
  *
  * @author gxm
  */
-enum NodeKind {
-
-    LN, BN
-};
-/*
- * Trie 借点
- */
-
-class TrieNode {
-
-    char key;
-    TrieNode[] points = null;
-    NodeKind kind = null;
-}
-
-class LeafNode extends TrieNode {
-
-    LeafNode(char k) {
-        super.key = k;
-        super.kind = NodeKind.LN;
-    }
-}
-
-/*
- * Trie 内部结点
- */
-class BranchNode extends TrieNode {
-
-    BranchNode(char k) {
-        super.key = k;
-        super.kind = NodeKind.BN;
-        super.points = new TrieNode[27];
-    }
-}
-
 public class StandardTree {
 
+    public static final int POINTS_SIZE = 27;
     private TrieNode root = new BranchNode(' ');
 
     public void insert(String word) {
@@ -52,44 +18,37 @@ public class StandardTree {
         word = word + "$";
         char[] chars = word.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-//            System.out.println("   插入 " + chars[i]);
             if (chars[i] == '$') {
-                curNode.points[26] = new LeafNode('$');
-//                System.out.println("   插入完毕，使当前结点 " + curNode.key);
+                curNode.points[POINTS_SIZE - 1] = new LeafNode('$');
             } else {
-                int pSize = chars[i] - 'a';
+                int pos = chars[i] - 'a';
                 try {
-                    if (curNode.points[pSize] == null) {
-
-                        curNode.points[pSize] = new BranchNode(chars[i]);
-//                    System.out.println(" 使当前结点 " + curNode.key + " 的第" + pSize + " 孩子指针指向字符：" + chars[i]);
-                        curNode = curNode.points[pSize];
+                    if (curNode.points[pos] == null) {
+                        curNode.points[pos] = new BranchNode(chars[i]);
+                        curNode = curNode.points[pos];
                     } else {
-//                    System.out.println("  不插入，找到当前结点" + curNode.key + " 的第" + pSize + "孩子指针已经指向的字符：" + chars[i]);
-                        curNode = curNode.points[pSize];
+                        curNode = curNode.points[pos];
                     }
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("the error is :" + String.valueOf(chars[i]) + "  " + pSize + "  " + word);
-
+                    System.out.println("the error is :" + String.valueOf(chars[i]) + "  " + pos + "  " + word);
                 }
             }
         }
     }
 
-   
     public boolean fullMatch(String word) {
 
         TrieNode curNode = root;
         char[] chars = word.toCharArray();
-        for (int i = 0; i < chars.length; i++) {           
+        for (int i = 0; i < chars.length; i++) {
             int pSize = chars[i] - 'a';
-            if (curNode.points[pSize] == null) {             
+            if (curNode.points[pSize] == null) {
                 return false;
             } else {
                 curNode = curNode.points[pSize];
                 if ((i == chars.length - 1)) {
-                    curNode = curNode.points[26];
-                    if (curNode != null && curNode.key == '$') {                       
+                    curNode = curNode.points[POINTS_SIZE - 1];
+                    if (curNode != null && curNode.key == '$') {
                         return true;
                     }
                 }
@@ -114,7 +73,38 @@ public class StandardTree {
 //    public TrieNode getRoot() {
 //        return root;
 //    }
+    enum NodeKind {
 
+        LN, BN
+    };
+
+    /**
+     * Trie 节点
+     */
+    class TrieNode {
+
+        char key;
+        TrieNode[] points = null;
+        NodeKind kind = null;
+    }
+
+    class LeafNode extends TrieNode {
+
+        LeafNode(char k) {
+            super.key = k;
+            super.kind = NodeKind.LN;
+        }
+    }
+
+    /**
+     * Trie 内部结点
+     */
+    class BranchNode extends TrieNode {
+
+        BranchNode(char k) {
+            super.key = k;
+            super.kind = NodeKind.BN;
+            super.points = new TrieNode[POINTS_SIZE];
+        }
+    }
 }
-
-
