@@ -1,4 +1,4 @@
-package com.apc.pinyin.util;
+package pinyin.util;
 
 import java.util.Map;
 

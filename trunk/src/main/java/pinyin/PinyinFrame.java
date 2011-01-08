@@ -8,7 +8,7 @@
  *
  * Created on Jul 5, 2010, 4:48:11 PM
  */
-package com.apc.pinyin;
+package pinyin;
 
 import hmm.Flag;
 import hmm.HmmResult;
