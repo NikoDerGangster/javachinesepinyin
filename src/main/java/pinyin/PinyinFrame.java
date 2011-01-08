@@ -38,10 +38,15 @@ public class PinyinFrame extends javax.swing.JFrame {
     public PinyinFrame() {
         initComponents();
         ptw.load("ptw.m");
+        System.out.println("ptw load completed.");
         wtp.load("wtp.m");
+        System.out.println("wtp load completed.");
         loadUserDict("userdict.txt");
+        System.out.println("userdict load completed.");
         ptw.init();
+        System.out.println("ptw init completed.");
         wtp.init();
+        System.out.println("wtp init completed.");
         if (2 == Flag.n) {
             ptw.setN(2);
             jRadioButton1.setSelected(true);
