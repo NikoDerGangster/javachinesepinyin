@@ -97,10 +97,14 @@ public class Viterbi<S, O> {
         O o = listObserve.get(0);
         Node<O> o1 = observeBank.get(o);
         if (o1 == null) {
-            throw new ObserveListException("unknown observe object " + o + ".");
+            o1 = new Observe<O>(o);
+            observeBank.add(o1);
         }
 
         Set<Integer> relatedStates = e.getStateProbByObserve(o1.getName());
+        if (relatedStates.isEmpty()) {
+            throw new ObserveListException("unknown observe object " + o + ".");
+        }
         ret.states = new int[listObserve.size()][];
         ret.delta = new double[listObserve.size()][];
         ret.psai = new int[listObserve.size()][];
