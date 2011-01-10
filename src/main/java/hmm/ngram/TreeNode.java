@@ -4,11 +4,7 @@
  */
 package hmm.ngram;
 
-import hmm.Node;
-import hmm.NodeBank;
-import hmm.State;
-import hmm.Transition;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  *
@@ -155,55 +151,33 @@ public class TreeNode<T> implements java.io.Serializable {
         return array;
     }
 
-    public static void main(String[] args) {
-        String a = "a";
-        String a1 = "abc";
-        String a2 = "acb";
-        String b = "b";
-        String b1 = "bc";
-        TreeNode<Character> root = new TreeNode<Character>();
-        NodeBank<Character, Node<Character>> stateBank = new NodeBank<Character, Node<Character>>();
-        stateBank.add(new State<Character>('a'));
-        stateBank.add(new State<Character>('b'));
+    public long getNumberOfNodeWhichCountLt(int lt) {
+        long c = count < lt ? 1 : 0;
 
-        CharComparater comparator = new CharComparater();
-        TreeNodeSortor<Character> sortor = new TreeNodeQuickSort<Character>();
-        sortor.setComparator(new Comparator<TreeNode<Character>>() {
-
-            public int compare(TreeNode<Character> t, TreeNode<Character> t1) {
-                return t.key - t1.key;
+        if (null != descendant) {
+            for (TreeNode<T> node : descendant) {
+                c += node.getNumberOfNodeWhichCountLt(lt);
             }
-        });
+        }
 
-        TreeNode<Character> node = root.insert(stringToCharArray(a), sortor, comparator);
-        node = root.insert(stringToCharArray(a2), sortor, comparator);
-        root.insert(stringToCharArray(b), sortor, comparator);
-        root.insert(stringToCharArray(a1), sortor, comparator);
-        root.insert(stringToCharArray(a1), sortor, comparator);
-        root.insert(stringToCharArray(b1), sortor, comparator);
+        return c;
+    }
 
-//        root.printTreeNode("");
-        root.buildIndex(root.getCount(), sortor);
+    public void cutCountLowerThan(int lt) {
+        if (lt == 1) {
+            return;
+        }
+        if (null != descendant) {
+            List<TreeNode<T>> l = new LinkedList<TreeNode<T>>();
+            for (int i = 0; i < descendant.length; i++) {
+                TreeNode<T> node = descendant[i];
+                if (node.getCount() >= lt) {
+                    l.add(node);
+                    node.cutCountLowerThan(lt);
+                }
+            }
 
-        root.printTreeNode("");
-
-        Transition<Character> tran = new Transition<Character>(root, stateBank);
-        tran.setComparator(comparator);
-        tran.setSortor(sortor);
-        double p = tran.getProb(stringToCharArray(a2), 3);
-        System.out.println(p);
-//        TreeNode n = root.searchNode(b1.toCharArray());
-//        n.printTreeNode("");
-//
-//        n = root.searchNode(a.toCharArray());
-//        n.printTreeNode("");
+            descendant = l.toArray(new TreeNode[0]);
+        }
     }
 }
-
-class CharComparater implements Comparator<Character> {
-
-    public int compare(Character t, Character t1) {
-        return t.charValue() - t1.charValue();
-    }
-}
-

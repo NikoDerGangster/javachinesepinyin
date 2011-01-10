@@ -21,8 +21,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -47,7 +45,7 @@ public class PinyinFrame extends javax.swing.JFrame {
         System.out.println("ptw init completed.");
         wtp.init();
         System.out.println("wtp init completed.");
-        if (2 == Flag.n) {
+        if (2 == Flag.getInstance().n) {
             ptw.setN(2);
             jRadioButton1.setSelected(true);
             jRadioButton2.setSelected(false);

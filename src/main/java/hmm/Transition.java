@@ -90,7 +90,7 @@ public class Transition<T> {
             for (int j = 1; j <= i; j++) {
                 igram[i - j] = ngram[n - j];
             }
-            ret += Flag.labda[i - 1] * getProb(igram);
+            ret += Flag.getInstance().labda(i - 1) * getProb(igram);
         }
 
         return ret;
