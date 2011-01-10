@@ -15291,7 +15291,7 @@ Head同	tong
 年	nian
 c，	，
 Head深	shen
-圳	zun
+圳	zhen
 Head有	you
 色	se
 金	jin
@@ -29637,7 +29637,7 @@ c。	。
 Head底	di
 c，	，
 Head深	shen
-圳	zun
+圳	zhen
 Head宝	bao
 安	an
 Head投	tou
@@ -29741,7 +29741,7 @@ Head最	zui
 Head早	zao
 Head在	zai
 Head深	shen
-圳	zun
+圳	zhen
 Head股	gu
 市	shi
 Head上	shang
@@ -30090,7 +30090,7 @@ Head风	feng
 c＂	＂
 Head使	shi
 Head深	shen
-圳	zun
+圳	zhen
 Head股	gu
 市	shi
 Head人	ren
@@ -30312,7 +30312,7 @@ Head不	bu
 免	mian
 c。	。
 Head深	shen
-圳	zun
+圳	zhen
 Head股	gu
 市	shi
 Head风	feng
@@ -30344,7 +30344,7 @@ Head因	yin
 c，	，
 c《	《
 Head深	shen
-圳	zun
+圳	zhen
 Head特	te
 区	qu
 Head报	bao
@@ -30378,7 +30378,7 @@ Head文	wen
 Head以	yi
 及	ji
 Head深	shen
-圳	zun
+圳	zhen
 Head市	shi
 府	fu
 Head领	ling
@@ -31125,7 +31125,7 @@ Head实	shi
 上	shang
 c，	，
 Head深	shen
-圳	zun
+圳	zhen
 c、	、
 Head上	shang
 海	hai
@@ -31686,7 +31686,7 @@ Head只	zhi
 c-	-
 c，	，
 Head深	shen
-圳	zun
+圳	zhen
 c、	、
 Head上	shang
 海	hai
@@ -70341,7 +70341,7 @@ c，	，
 Head而	er
 Head在	zai
 Head深	shen
-圳	zun
+圳	zhen
 Head等	deng
 Head地	di
 Head则	ze
@@ -81567,7 +81567,7 @@ Head广	guang
 州	zhou
 c、	、
 Head深	shen
-圳	zun
+圳	zhen
 c、	、
 Head榆	yu
 次	ci

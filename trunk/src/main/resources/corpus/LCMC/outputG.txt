@@ -6146,7 +6146,7 @@ Head修	xiu
 c，	，
 Head使	shi
 Head深	shen
-圳	zun
+圳	zhen
 c、	、
 Head上	shang
 海	hai
@@ -98486,7 +98486,7 @@ c、	、
 Head南	nan
 下	xia
 Head深	shen
-圳	zun
+圳	zhen
 c，	，
 Head神	shen
 功	gong
@@ -98503,7 +98503,7 @@ Head宇	yu
 Head南	nan
 下	xia
 Head深	shen
-圳	zun
+圳	zhen
 c，	，
 Head此	ci
 行	xing
@@ -98525,7 +98525,7 @@ c。	。
 c，	，
 c《	《
 Head深	shen
-圳	zun
+圳	zhen
 Head特	te
 区	qu
 Head报	bao
@@ -98588,7 +98588,7 @@ Head进	jin
 Head南	nan
 下	xia
 Head深	shen
-圳	zun
+圳	zhen
 Head的	de
 Head第	di
 一	yi
@@ -98701,7 +98701,7 @@ Head轰	hong
 动	dong
 c。	。
 Head深	shen
-圳	zun
+圳	zhen
 Head之	zhi
 Head行	xing
 c，	，
@@ -98728,7 +98728,7 @@ Head心	xin
 Head成	cheng
 为	wei
 Head深	shen
-圳	zun
+圳	zhen
 Head的	de
 Head热	re
 门	men
@@ -99130,7 +99130,7 @@ Head香	xiang
 港	gang
 c、	、
 Head深	shen
-圳	zun
+圳	zhen
 Head引	yin
 起	qi
 Head轰	hong
@@ -99154,7 +99154,7 @@ Head即	ji
 Head离	li
 开	kai
 Head深	shen
-圳	zun
+圳	zhen
 Head的	de
 Head时	shi
 候	hou
@@ -99294,7 +99294,7 @@ Head挑	tiao
 战	zhan
 c。	。
 Head深	shen
-圳	zun
+圳	zhen
 Head荔	li
 枝	zhi
 Head公	gong
@@ -99414,7 +99414,7 @@ Head几	ji
 Head天	tian
 Head的	de
 Head深	shen
-圳	zun
+圳	zhen
 Head之	zhi
 Head行	xing
 c，	，
@@ -99511,7 +99511,7 @@ Head接	jie
 受	shou
 Head继	ji
 Head深	shen
-圳	zun
+圳	zhen
 Head之	zhi
 Head行	xing
 Head后	hou
