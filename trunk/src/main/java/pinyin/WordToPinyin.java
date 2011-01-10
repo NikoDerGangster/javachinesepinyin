@@ -115,6 +115,7 @@ public class WordToPinyin {
     public void save(String filename) {
         try {
             ngram.buildIndex(ngram.getCount(), sortor);
+            ngram.cutCountLowerThan(Flag.getInstance().getNgramMinimumShowTimes());
             ObjectOutputStream oos = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream(filename)));
             oos.writeObject(stateBank);
             oos.writeObject(observeBank);
@@ -170,7 +171,7 @@ public class WordToPinyin {
                         new InputStreamReader(
                         new FileInputStream(file), "UTF-8"));
                 String line = br.readLine();
-                Window<Pair<String, String>> window = new Window<Pair<String, String>>(Flag.n);
+                Window<Pair<String, String>> window = new Window<Pair<String, String>>(Flag.getInstance().n);
                 Pair<String, String> cur = null;
                 while (null != line) {
                     cur = parseLine(line.trim());

@@ -8,7 +8,7 @@ import hmm.ngram.*;
 import java.util.*;
 
 /**
- * http://www.cs.umb.edu/~srevilak/viterbi/
+ * reference: http://www.cs.umb.edu/~srevilak/viterbi/
  * @author ray
  */
 public class Viterbi<S, O> {
