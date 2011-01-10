@@ -115,7 +115,7 @@ public class WordToPinyin {
     public void save(String filename) {
         try {
             ngram.buildIndex(ngram.getCount(), sortor);
-            ngram.cutCountLowerThan(Flag.getInstance().getNgramMinimumShowTimes());
+//            ngram.cutCountLowerThan(Flag.getInstance().getNgramMinimumShowTimes());
             ObjectOutputStream oos = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream(filename)));
             oos.writeObject(stateBank);
             oos.writeObject(observeBank);

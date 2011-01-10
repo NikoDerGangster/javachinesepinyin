@@ -32487,7 +32487,7 @@ Head市	shi
 场	chang
 c－－	－－
 Head深	shen
-圳	zun
+圳	zhen
 Head经	jing
 济	ji
 特	te
@@ -32603,7 +32603,7 @@ Head上	shang
 海	hai
 c、	、
 Head深	shen
-圳	zun
+圳	zhen
 Head出	chu
 现	xian
 Head的	de
@@ -32725,7 +32725,7 @@ Head以	yi
 上	shang
 c。	。
 Head深	shen
-圳	zun
+圳	zhen
 Head股	gu
 市	shi
 Head行	hang
@@ -32761,7 +32761,7 @@ c。	。
 Head由	you
 于	yu
 Head深	shen
-圳	zun
+圳	zhen
 Head股	gu
 市	shi
 Head行	hang
@@ -32801,7 +32801,7 @@ Head千	qian
 迢	tiao
 Head赴	fu
 Head深	shen
-圳	zun
+圳	zhen
 Head加	jia
 入	ru
 Head购	gou
@@ -41216,7 +41216,7 @@ Head发	fa
 达	da
 Head的	de
 Head深	shen
-圳	zun
+圳	zhen
 c，	，
 Head打	da
 Head到	dao
@@ -91330,7 +91330,7 @@ Head广	guang
 州	zhou
 c、	、
 Head深	shen
-圳	zun
+圳	zhen
 c、	、
 Head上	shang
 海	hai

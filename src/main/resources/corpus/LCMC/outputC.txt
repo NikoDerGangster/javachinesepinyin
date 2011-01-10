@@ -49348,7 +49348,7 @@ c，	，
 Head我	wo
 省	sheng
 Head深	shen
-圳	zun
+圳	zhen
 c、	、
 Head湛	zhan
 江	jiang
@@ -49393,7 +49393,7 @@ Head实	shi
 Head银	yin
 行	hang
 Head深	shen
-圳	zun
+圳	zhen
 Head分	fen
 行	hang
 Head行	hang
@@ -49742,7 +49742,7 @@ c。	。
 c＂	＂
 c（	（
 Head深	shen
-圳	zun
+圳	zhen
 Head群	qun
 众	zhong
 c：	：
@@ -51144,7 +51144,7 @@ c（	（
 Head中	zhong
 信	xin
 Head深	shen
-圳	zun
+圳	zhen
 Head行	xing
 Head员	yuan
 工	gong
