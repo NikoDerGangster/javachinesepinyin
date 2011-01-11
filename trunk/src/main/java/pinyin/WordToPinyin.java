@@ -263,7 +263,7 @@ public class WordToPinyin {
                 c.save("wtp.m");
             }
         } else {
-            System.out.println("Please input directory of corpus:\n\t/>./train.sh ../corpus");
+            System.out.println("Please input directory of corpus:\n\t/>./train.sh ../corpus/LCMC");
         }
     }
 }

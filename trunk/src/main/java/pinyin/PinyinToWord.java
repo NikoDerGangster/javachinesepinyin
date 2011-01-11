@@ -351,15 +351,7 @@ public class PinyinToWord {
                 c.save("ptw.m");
             }
         } else {
-            System.out.println("Please input directory of corpus:\n\t/>./train.sh ../corpus");
+            System.out.println("Please input directory of corpus:\n\t/>./train.sh ../corpus/LCMC");
         }
-//        c.load("model");
-//        c.init();
-//        String [] o = {"xi","cai","ji"};
-//        List<State> s = c.classify(o);
-//        for (State state : s) {
-//            System.out.print(state.getName() + " ");
-//        }
-//        System.out.println();
     }
 }
