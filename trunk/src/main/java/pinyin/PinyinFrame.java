@@ -295,25 +295,32 @@ public class PinyinFrame extends javax.swing.JFrame {
 
     public void loadUserDict(String filename) {
         File file = new File(filename);
-        if (file.exists()) {
-            try {
-                BufferedReader br = new BufferedReader(
-                        new InputStreamReader(
-                        new FileInputStream(file), "UTF-8"));
-                String line = br.readLine();
-
-                while (null != line) {
-                    line = line.trim();
-                    if (!"".equals(line)) {
-                        String[] array = line.split("\\s+");
-                        ptw.addUserDict(array[0], array[1]);
-                    }
-                    line = br.readLine();
+        InputStream is = null;
+        try {
+            if (file.exists()) {
+                is = new FileInputStream(file);
+            } else {
+                is = PinyinFrame.class.getClassLoader().getResourceAsStream(filename);
+                if (null == is) {
+                    return;
                 }
-                br.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
             }
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(is, "UTF-8"));
+            String line = br.readLine();
+
+            while (null != line) {
+                line = line.trim();
+                if (!"".equals(line)) {
+                    String[] array = line.split("\\s+");
+                    int showtimes = array.length > 2 ? Integer.valueOf(array[2]) : 50;
+                    ptw.addCustomWord(array[0], array[1], showtimes);
+                }
+                line = br.readLine();
+            }
+            br.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
