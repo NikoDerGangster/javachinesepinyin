@@ -302,37 +302,44 @@ public class PinyinToWord {
         }
     }
 
-    public void addUserDict(String words, String pinyin) {
-        Character[] states = new Character[words.length()];
-        for (int i = 0; i < states.length; i++) {
-            states[i] = words.charAt(i);
-        }
-        String[] observes = pinyin.split("'");
-        for (int n = 0; n < 50; n++) {
-            ngram.insert(states, sortor, comparator);
-        }
-        for (int i = 0; i < states.length; i++) {
-            Node<Character> state = new State<Character>(states[i]);
-            Node<String> observe = new Observe<String>(observes[i]);
-            //pi
-            state = stateBank.add(state);
-            int index = state.getIndex();
-            int c = pii.containsKey(index) ? pii.get(index) + 1 : 1;
-            pii.put(index, c);
-            //Emission
-            int si = state.getIndex();
-            int oi = observe.getIndex();
-            Map<Integer, Integer> row = null;
-            if (emisMatrix.containsKey(si)) {
-                row = emisMatrix.get(si);
-            } else {
-                row = new HashMap<Integer, Integer>();
-                emisMatrix.put(si, row);
+    public void addCustomWord(String words, String pinyin, int showtimes) {
+//        int showtimes = 50;
+        int d = words.length() - Flag.getInstance().n;
+        d = d > 0 ? d + 1 : 1;
+        int n = words.length() >= Flag.getInstance().n ? Flag.getInstance().n : words.length();
+        String[] arrayPinyin = pinyin.split("'");
+        for (int k = 0; k < d; k++) {
+            Character[] states = new Character[n];
+            String[] observes = new String[n];
+            for (int i = 0; i < n; i++) {
+                states[i] = words.charAt(k + i);
+                observes[i] = arrayPinyin[k + i];
             }
-            int count = row.containsKey(oi) ? row.get(oi) + 1 : 1;
-            row.put(oi, count);
+            for (int i = 0; i < showtimes; i++) {
+                ngram.insert(states, sortor, comparator);
+                for (int j = 0; j < states.length; j++) {
+                    Node<Character> state = new State<Character>(states[j]);
+                    Node<String> observe = new Observe<String>(observes[j]);
+                    //pi
+                    state = stateBank.add(state);
+                    int index = state.getIndex();
+                    int c = pii.containsKey(index) ? pii.get(index) + 1 : 1;
+                    pii.put(index, c);
+                    //Emission
+                    int sj = state.getIndex();
+                    int oj = observe.getIndex();
+                    Map<Integer, Integer> row = null;
+                    if (emisMatrix.containsKey(sj)) {
+                        row = emisMatrix.get(sj);
+                    } else {
+                        row = new HashMap<Integer, Integer>();
+                        emisMatrix.put(sj, row);
+                    }
+                    int count = row.containsKey(oj) ? row.get(oj) + 1 : 1;
+                    row.put(oj, count);
+                }
+            }
         }
-
     }
 
     public static void main(String[] args) {
