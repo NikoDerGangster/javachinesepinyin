@@ -4,6 +4,9 @@
  */
 package pinyin;
 
+import ngram.TreeNode;
+import ngram.TreeNodeSortor;
+import ngram.TreeNodeBinarySort;
 import pinyin.util.Pair;
 import pinyin.util.Window;
 import hmm.*;

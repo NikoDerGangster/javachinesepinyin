@@ -4,8 +4,8 @@
  */
 package hmm;
 
-import hmm.ngram.TreeNode;
-import hmm.ngram.TreeNodeSortor;
+import ngram.TreeNode;
+import ngram.TreeNodeSortor;
 import java.util.Comparator;
 
 /**
