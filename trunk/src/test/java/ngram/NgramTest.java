@@ -5,7 +5,6 @@
 package ngram;
 
 import hmm.*;
-import hmm.ngram.*;
 import java.util.Comparator;
 import junit.framework.TestCase;
 

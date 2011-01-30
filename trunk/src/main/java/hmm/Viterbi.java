@@ -4,6 +4,7 @@
  */
 package hmm;
 
+import ngram.TreeNodeSortor;
 import hmm.ngram.*;
 import java.util.*;
 

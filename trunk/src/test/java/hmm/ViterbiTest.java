@@ -4,9 +4,9 @@
  */
 package hmm;
 
-import hmm.ngram.TreeNode;
-import hmm.ngram.TreeNodeBinarySort;
-import hmm.ngram.TreeNodeSortor;
+import ngram.TreeNode;
+import ngram.TreeNodeBinarySort;
+import ngram.TreeNodeSortor;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
