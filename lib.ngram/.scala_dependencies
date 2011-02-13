@@ -1,0 +1,21 @@
+/home/ray/workspace/opensource/javachinesepinyin/lib.ngram/target/classes:/home/ray/.m2/repository/org/scala-lang/scala-library/2.8.0/scala-library-2.8.0.jar
+-------
+src/main/scala/ngram/SimpleTreeNode.scala -> src/main/scala/ngram/SimpleTreeNode.scala
+src/main/scala/ngram/SimpleTreeNode.scala -> src/main/scala/ngram/NgramModel.scala
+src/main/scala/ngram/NgramModel.scala -> src/main/scala/ngram/NgramModel.scala
+src/test/scala/ngram/NgramTest.scala -> src/test/scala/ngram/NgramTest.scala
+-------
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/SimpleNgramModel.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl$$anonfun$traversal$1.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl$$anonfun$sortWith$1.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl$$anonfun$printNode$1.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl$$anonfun$1.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl$$anonfun$buildIndex$1.class
+src/main/scala/ngram/SimpleTreeNode.scala -> target/classes/ngram/TreeNodeImpl$$anonfun$cutNodeWhichCountLessThan$1.class
+src/main/scala/ngram/NgramModel.scala -> target/classes/ngram/NgramModel.class
+src/main/scala/ngram/NgramModel.scala -> target/classes/ngram/TreeNode.class
+src/main/scala/ngram/NgramModel.scala -> target/classes/ngram/TreeNode$.class
+src/main/scala/ngram/NgramModel.scala -> target/classes/ngram/TreeNode$$anonfun$printNode$1.class
+src/main/scala/ngram/NgramModel.scala -> target/classes/ngram/TreeNode$$anonfun$stringToCharArray$1.class
+src/test/scala/ngram/NgramTest.scala -> target/test-classes/ngram/NgramTest.class
