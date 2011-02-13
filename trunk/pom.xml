@@ -22,6 +22,8 @@
         <module>javachinesepinyin</module>
         <module>lib.ngram</module>
         <module>lib.hmm</module>
+        <module>lib.classifier</module>
+        <module>lib.utils</module>
     </modules>
 
     <dependencyManagement>
@@ -80,6 +82,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.1</version>
                     <configuration>
                         <archive>
                             <manifest>
