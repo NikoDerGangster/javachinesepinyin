@@ -30,7 +30,12 @@ trait AbstractClassifier[S <: Comparable[S], O <: Comparable[O]] extends SeqLabe
   
   val p = new Properties()
   def setProperty(key: String, value: String): Unit = p.setProperty(key, value)
-  def load(filename: String): Unit = load(new FileInputStream(filename))
+  def load(filename: String): Unit = 
+    if(new File(filename).exists) {
+      load(new FileInputStream(filename))
+    } else {
+      load(this.getClass.getClassLoader.getResourceAsStream(filename))
+    }
 }
 
 class HMMClassifier[S <: Comparable[S], O <: Comparable[O]] extends AbstractClassifier[S, O] {

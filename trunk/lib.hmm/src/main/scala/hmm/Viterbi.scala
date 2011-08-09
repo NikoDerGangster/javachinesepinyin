@@ -29,6 +29,7 @@ class Viterbi[S <: Comparable[S], O <: Comparable[O]] {
     }
 
     val o = listObserve(0);
+    //Add observe node if absent, and get Node[O] object.
     var o1 = observeBank.add(o)
     
     val relatedStates = e.getStateProbByObserve(o1.name)

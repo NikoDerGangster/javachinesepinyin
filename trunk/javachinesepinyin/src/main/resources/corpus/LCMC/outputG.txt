@@ -41003,7 +41003,7 @@ Head明	ming
 Head了	le
 c。	。
 Head好	hao
-Head唻	
+Head唻	lai
 c，	，
 Head一	yi
 Head客	ke
@@ -187792,7 +187792,7 @@ Head头	tou
 Head下	xia
 c，	，
 Head清	qing
-癯	?
+癯	qu
 Head面	mian
 孔	kong
 Head上	shang
@@ -209912,7 +209912,7 @@ Head一	yi
 直	zhi
 Head以	yi
 Head老	lao
-幺	??
+幺	yao
 Head地	di
 位	wei
 c，	，
@@ -211585,7 +211585,7 @@ Head发	fa
 c，	，
 Head完	wan
 成	cheng
-Head輨	□
+Head輨	guan
 Head毂	gu
 Head中	zhong
 原	yuan
@@ -219252,7 +219252,7 @@ Head他	ta
 Head同	tong
 Head吴	wu
 Head俊	jun
-Head陞	□
+Head陞	sheng
 c、	、
 Head张	zhang
 Head海	hai
@@ -219274,7 +219274,7 @@ Head下	xia
 c。	。
 Head吴	wu
 Head俊	jun
-Head陞	□
+Head陞	sheng
 Head认	ren
 为	wei
 Head自	zi
