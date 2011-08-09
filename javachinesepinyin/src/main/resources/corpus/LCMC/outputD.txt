@@ -21439,7 +21439,7 @@ Head小	xiao
 凉	liang
 山	shan
 Head大	da
-拉	>la
+拉	la
 坝	ba
 Head彝	yi
 Head寨	zhai
@@ -31240,7 +31240,7 @@ c、	、
 Head猫	mao
 c、	、
 Head刺	ci
-猬	??
+猬	wei
 c、	、
 Head乌	wu
 鸦	ya

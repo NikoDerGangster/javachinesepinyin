@@ -41662,7 +41662,7 @@ Head山	shan
 Head和	he
 Head陆	lu
 家	jia
-浜	?
+浜	bang
 c；	；
 Head浦	pu
 东	dong
@@ -50750,7 +50750,7 @@ Head如	ru
 今	jin
 c＂	＂
 Head白	bai
-Head纻	□
+Head纻	zhu
 Head春	chun
 Head衫	shan
 Head如	ru
@@ -116265,7 +116265,7 @@ c?	?
 Head半	ban
 Head乳	ru
 Head糖	tang
-苷	?
+苷	gan
 Head酶	mei
 c，	，
 Head可	ke
@@ -116293,7 +116293,7 @@ c?	?
 Head半	ban
 Head乳	ru
 Head糖	tang
-苷	?
+苷	gan
 Head酶	mei
 c，	，
 Head不	bu
@@ -128030,9 +128030,9 @@ c，	，
 Head可	ke
 Head读	du
 Head为	wei
-Head猨	□
+Head猨	yuan
 c，	，
-Head猨	□
+Head猨	yuan
 Head即	ji
 Head猿	yuan
 c，	，

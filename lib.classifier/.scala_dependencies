@@ -4,6 +4,7 @@ src/main/scala/pinyin/classifier/PinyinToWord.scala -> src/main/scala/pinyin/cla
 src/main/scala/pinyin/classifier/PinyinToWord.scala -> src/main/scala/pinyin/classifier/PinyinToWord.scala
 src/main/scala/pinyin/classifier/WordToPinyin.scala -> src/main/scala/pinyin/classifier/WordToPinyin.scala
 src/main/scala/pinyin/classifier/WordToPinyin.scala -> src/main/scala/pinyin/classifier/Classifier.scala
+src/test/scala/pinyin/classifier/ClassifierTestCase.scala -> src/test/scala/pinyin/classifier/ClassifierTestCase.scala
 src/main/scala/pinyin/classifier/Classifier.scala -> src/main/scala/pinyin/classifier/Classifier.scala
 -------
 src/main/scala/pinyin/classifier/PinyinToWord.scala -> target/classes/pinyin/classifier/PinyinToWord$$anonfun$pinyin$classifier$PinyinToWord$$statisticNGram$1.class
@@ -22,6 +23,9 @@ src/main/scala/pinyin/classifier/WordToPinyin.scala -> target/classes/pinyin/cla
 src/main/scala/pinyin/classifier/WordToPinyin.scala -> target/classes/pinyin/classifier/WordToPinyin.class
 src/main/scala/pinyin/classifier/WordToPinyin.scala -> target/classes/pinyin/classifier/WordToPinyin$$anonfun$2.class
 src/main/scala/pinyin/classifier/WordToPinyin.scala -> target/classes/pinyin/classifier/WordToPinyin$$anonfun$statisticNGram$2.class
+src/test/scala/pinyin/classifier/ClassifierTestCase.scala -> target/test-classes/pinyin/classifier/ClassifierTestCase$$anonfun$testWordToPinyin$1$$anonfun$apply$1.class
+src/test/scala/pinyin/classifier/ClassifierTestCase.scala -> target/test-classes/pinyin/classifier/ClassifierTestCase.class
+src/test/scala/pinyin/classifier/ClassifierTestCase.scala -> target/test-classes/pinyin/classifier/ClassifierTestCase$$anonfun$testWordToPinyin$1.class
 src/main/scala/pinyin/classifier/Classifier.scala -> target/classes/pinyin/classifier/HMMClassifier.class
 src/main/scala/pinyin/classifier/Classifier.scala -> target/classes/pinyin/classifier/AbstractClassifier.class
 src/main/scala/pinyin/classifier/Classifier.scala -> target/classes/pinyin/classifier/SeqLabelClassifier.class

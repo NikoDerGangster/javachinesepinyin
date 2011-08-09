@@ -6,14 +6,14 @@ src/main/scala/hmm/Pi.scala -> src/main/scala/hmm/Pi.scala
 src/main/scala/hmm/Flag.scala -> src/main/scala/hmm/Flag.scala
 src/main/scala/hmm/exception/HMMRuntimeException.scala -> src/main/scala/hmm/exception/HMMRuntimeException.scala
 src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/exception/HMMRuntimeException.scala
-src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/Node.scala
 src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/Transition.scala
+src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/Node.scala
 src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/Pi.scala
 src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/Emission.scala
 src/main/scala/hmm/Viterbi.scala -> src/main/scala/hmm/Viterbi.scala
 src/test/scala/hmm/ViterbiTest.scala -> src/test/scala/hmm/ViterbiTest.scala
-src/main/scala/hmm/Transition.scala -> src/main/scala/hmm/Node.scala
 src/main/scala/hmm/Transition.scala -> src/main/scala/hmm/Transition.scala
+src/main/scala/hmm/Transition.scala -> src/main/scala/hmm/Node.scala
 src/main/scala/hmm/Transition.scala -> src/main/scala/hmm/Flag.scala
 src/main/scala/hmm/Node.scala -> src/main/scala/hmm/Node.scala
 -------

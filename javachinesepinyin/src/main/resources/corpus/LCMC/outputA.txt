@@ -43552,7 +43552,7 @@ Head岁	sui
 Head的	de
 Head杨	yang
 Head戊	wu
-嫆	
+嫆	rong
 Head说	shuo
 Head得	de
 Head更	geng
@@ -80886,7 +80886,7 @@ Head和	he
 Head西	xi
 药	yao
 Head氟	fu
-Head哌	?
+Head哌	pai
 Head酸	suan
 Head合	he
 理	li
@@ -83789,7 +83789,7 @@ c，	，
 Head一	yi
 个	ge
 Head扫	sao
-Head蹚	□
+Head蹚	tang
 Head腿	tui
 Head把	ba
 Head歹	dai
